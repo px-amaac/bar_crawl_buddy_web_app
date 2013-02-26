@@ -1,0 +1,114 @@
+@import "bootstrap";
+
+$grayMediumLight: #eaeaea;
+
+/* universal styling */
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	padding-top: 100px;
+}
+
+section {
+	resize:vertical;
+}
+
+.center {
+	text-align:center;
+}
+
+.center h1 {
+	margin-bottom: 10px;
+}
+
+.right {
+	float: right;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+.nav {
+	font-size: 1.7em;
+	letter-spacing: -1px;
+	font-weight: bold;
+	line-height: 1;
+}
+
+.navbar-inner {
+  background: #112e4b;
+
+    background: -moz-linear-gradient(top,  #112e4b 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#112e4b), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #112e4b 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #112e4b 0%,#000000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #112e4b 0%,#000000 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #112e4b 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#112e4b', endColorstr='#000000',GradientType=0 ); /* IE6-8 */
+    }
+
+#logo {
+	float: left;
+	margin-right: 10px;
+	font-size: 1.7em;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	font-weight: bold;
+	line-height: 1;
+	&:hover {
+		color: white;
+		text-decoration: none;
+	}
+}
+
+/* footer */
+
+footer {
+	margin-top: 45px;
+	padding-top: 5px;
+	boarder-top: 1px solid $grayMediumLight;
+	color: $grayLight;
+	small{ 
+	float: left;
+	}
+	ul{
+		float: right;
+		list-style:none;
+		li {
+			float: left;
+			margin-left: 10px;
+		}
+	}
+}

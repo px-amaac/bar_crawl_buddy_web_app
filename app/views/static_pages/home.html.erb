@@ -1,10 +1,15 @@
-<div class="center hero-unit">
-<h1>Welcome to the Bar Crawl Buddy Console</h1>
-<h2>
-  This is the home page for the Bar Crawl Buddy restful api service that will support the android and iOs apps.
-</h2>
+<div class ="row-fluid">
+	<div class="span6">
+		<div class="center hero-unit">
+			<h1>Bar Crawl Buddy Console</h1>
+			<h2>
+  			Home of the RESTFul API for Bar Crawl Buddy. Supporting Bars Everywhere.
+			</h2>
 
-  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+  			<%= link_to "Bar Owner Sign Up!", signup_path, class: "btn btn-large btn-primary" %>
+		</div>
+	</div>
+	<div class="span6">
+  	<%= image_tag("bcb.png", :size => "500x500") %>
+	</div>	
 </div>
-
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
