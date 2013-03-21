@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227092507) do
+ActiveRecord::Schema.define(:version => 20130321225423) do
+
+  create_table "bars", :force => true do |t|
+    t.string   "bar_name"
+    t.float    "lat"
+    t.float    "long"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
