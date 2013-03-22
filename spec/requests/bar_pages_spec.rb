@@ -11,7 +11,11 @@ describe "Bar pages" do
   		it { should have_selector('title', text: bar.bar_name) }
 	end
 	describe "new bar" do
-		before { visit new_bar_path }
+		let(:admin) { FactoryGirl.create(:admin) }
+		before(:each) do
+			sign_in admin
+			visit new_bar_path
+		end
 
 		let(:submit) { "Create Bar" }
 

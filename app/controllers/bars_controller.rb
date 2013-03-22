@@ -1,4 +1,6 @@
 class BarsController < ApplicationController
+	
+	before_filter :admin_user, :only => [:new, :create, :destroy]
 
 	def show
 		@bar = Bar.find(params[:id])
@@ -17,4 +19,5 @@ class BarsController < ApplicationController
 			render 'new'
 		end
 	end
+
 end
