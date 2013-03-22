@@ -11,7 +11,7 @@ class BarsController < ApplicationController
 	end
 
 	def index
-		@bars = Bar.all
+		@bars = Bar.paginate(page: params[:page])
 	end
 
 	def create

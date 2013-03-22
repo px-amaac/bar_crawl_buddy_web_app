@@ -1,11 +1,14 @@
 <% provide(:title, 'All Bars') %>
 
 <h1>All Bars</h1>
-
-<ul class="bars">
-	<% @bars.each do |bar| %>
-	<li>
-		<%= link_to bar.bar_name, bar %>
-	</li>
+<div class="span8">
+<% if current_user.admin? %>
+	<%= link_to "New Bar!", new_bar_path, class: "btn btn-large btn-primary" %>
 	<% end %>
+
+<%= will_paginate %>
+<ul class="users">
+	<%= render @bars %>
 </ul>
+<%= will_paginate %>
+</div>
