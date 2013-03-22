@@ -74,13 +74,6 @@ p {
 	letter-spacing: -1px;
 	font-weight: bold;
 	line-height: 1;
-  li{ 
-      float: none;
-      line-height: 19px;
-      text-decoration: none;
-      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-      color:  #437dd4;
-  }
 }
 
 .navbar-inner {
@@ -101,19 +94,21 @@ background-image: -moz-linear-gradient(top, #112e4b, #06101a);
     }
     .divider-vertical {
       height: 41px;
-      background-color: #000000;
-      border-right: 1px solid #000000;
+      background-color: #99b0c7;
+      border-right: 1px solid #99b0c7;
     }
     .nav > {
       li > a {
         padding: 10px 10px 11px;
-        font-size: 14px;
         color: #99b0c7;
+        &:hover, &:focus {
+          color: #ffffff;
+        }
       }
       .active > a {
-        color: #000000;
+        color: #ffffff;
         &:hover, &:focus {
-          color: #000000;
+          color: #ffffff;
         }
       }
     }
@@ -129,7 +124,7 @@ background-image: -moz-linear-gradient(top, #112e4b, #06101a);
     background-image: linear-gradient(top, white, #e6e6e6);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'ffffff,   endColorstr='#'e6e6e6, GradientType=0);
     &:hover, &:active, &.active, &.disabled, &[disabled] {
-      color: #ffffff;
+      color: #99b0c7;
       background-color: #000c18;
     }
   }
