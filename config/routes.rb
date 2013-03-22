@@ -1,7 +1,17 @@
 BarCrawlBuddy::Application.routes.draw do
-  resources :users
-  resources :bars
+  resources :users do
+    member do
+      get :bars
+    end
+  end
+
+  resources :bars do
+    member do
+      get :users
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
+  resources :manager_relationships, only: [:create, :destroy]
   root to: 'static_pages#home'
 
   match '/new_bar', to: 'bars#new'

@@ -1,8 +1,18 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
-    <section>
-		<h1><%= @user.name %></h1>
-	</section>
-  </aside>
+	<aside class="span4">
+		<section>
+			<h1><%= @user.name %></h1>
+			<span><%= link_to "View My Profile", @user %> </span>
+		</section>
+	</aside>
+	<div class="span8">
+		<h3><%= @title %></h3>
+		<% if @bars.any? %>
+			<ul class="bars">
+				<%= render @bars %>
+			</ul>
+			<%= will_paginate %>
+		<% end %>
+	</div>
 </div>

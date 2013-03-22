@@ -5,4 +5,7 @@
 			<h1><%= @bar.bar_name %></h1>
 		</section>
 	</aisde>
+	<div class="span8">
+		<%= render 'manage_form' if signed_in? %>
+	</div>
 </div>

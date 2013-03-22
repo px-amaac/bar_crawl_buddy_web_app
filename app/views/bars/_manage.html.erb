@@ -1,0 +1,4 @@
+<%= form_for(current_user.manager_relationships.build(bar_id: @bar.id)) do |f| %>
+<div><%= f.hidden_field :bar_id %></div>
+<%= f.submit "Manage Bar", class: "btn btn-large btn-primary" %>
+<% end %>

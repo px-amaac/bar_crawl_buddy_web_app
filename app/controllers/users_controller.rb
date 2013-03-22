@@ -14,6 +14,7 @@ before_filter :admin_user,  only: :destroy
 
   def show
   	@user = User.find(params[:id])
+    @bars = @user.bars.paginate(page: params[:page])
   end
   def index
     @users = User.paginate(page: params[:page])

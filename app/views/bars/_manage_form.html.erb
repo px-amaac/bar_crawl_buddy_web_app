@@ -1,0 +1,7 @@
+<div id="manage_form">
+	<% if current_user.managing?(@bar) %>
+	<%= render 'unmanage' %>
+	<% else %>
+	<%= render 'manage' %>
+	<% end %>
+</div>

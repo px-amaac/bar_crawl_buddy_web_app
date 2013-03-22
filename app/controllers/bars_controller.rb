@@ -1,7 +1,11 @@
 class BarsController < ApplicationController
-	before_filter :signed_in_user, :only => [:show, :new, :create, :destroy]
+	before_filter :signed_in_user, :only => [:show, :new, :create, :destroy, :users]
 	before_filter :admin_user, :only => [:new, :create, :destroy]
 
+	def users
+		@bar = Bar.find(params[:id])
+		@users = @bar.users.paginate(page: params[:page])
+	end
 	def show
 		@bar = Bar.find(params[:id])
 	end
