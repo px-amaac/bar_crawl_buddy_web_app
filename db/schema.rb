@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322001443) do
+ActiveRecord::Schema.define(:version => 20130322190238) do
 
   create_table "bars", :force => true do |t|
     t.string   "bar_name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20130322001443) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
   end
+
+  create_table "manager_relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "bar_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "manager_relationships", ["bar_id"], :name => "index_manager_relationships_on_bar_id"
+  add_index "manager_relationships", ["user_id", "bar_id"], :name => "index_manager_relationships_on_user_id_and_bar_id", :unique => true
+  add_index "manager_relationships", ["user_id"], :name => "index_manager_relationships_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

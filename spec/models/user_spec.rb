@@ -28,9 +28,31 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:manager_relationships) }
+  it { should respond_to(:bars) }
+  it { should respond_to(:managing?) }
+  it { should respond_to(:manage!) }
+  it { should respond_to(:unmanage!) }
 
   it { should be_valid }
   it { should_not be_admin }
+
+  describe "managing" do
+    let(:bar) { FactoryGirl.create(:bar) }
+    before do
+      @user.save
+      @user.manage!(bar)
+    end
+    it { should be_managing(bar) }
+    its(:bars) { should include(bar) }
+
+    describe " and unmanaging" do
+      before { @user.unmanage!(bar) }
+
+      it { should_not be_managing(bar) }
+      its(:bars) { should_not include(bar) }
+    end
+  end
 
   describe "with admin attribute set to 'true'" do
     before do

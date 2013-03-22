@@ -14,6 +14,9 @@
 
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
+  has_many :manager_relationships, dependent: :destroy
+  has_many :bars, through: :manager_relationships
+
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -25,6 +28,18 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  def managing?(bar)
+    manager_relationships.find_by_bar_id(bar.id)
+  end
+
+  def manage! (bar)
+    manager_relationships.create!(bar_id: bar.id)
+  end
+
+  def unmanage!(bar)
+    manager_relationships.find_by_bar_id(bar.id).destroy
+  end
 
   private
 
