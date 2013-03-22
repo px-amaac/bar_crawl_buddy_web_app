@@ -18,6 +18,7 @@ describe ManagerRelationship do
   describe "when bar id is not present" do
   	before  {manager_relationship.bar_id = nil }
   	it { should_not be_valid }
+  end
 
   describe "accessible attributes" do
   	it "should not allow access to user_id" do

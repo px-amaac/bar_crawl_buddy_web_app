@@ -26,8 +26,25 @@ describe Bar do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:manager_relationships)}
+  it { should respond_to(:users) }
+
+
   
   it { should be_valid }
+
+  describe "being managed" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:newbar) { FactoryGirl.create(:bar) }
+    before do
+      user.manage!(newbar)
+    end
+
+    describe "managed bar" do
+    subject { newbar } 
+      its(:users) { should include(user) }
+    end
+  end
 
   describe "when bar name is not present" do
   	before { @bar.bar_name = " " }

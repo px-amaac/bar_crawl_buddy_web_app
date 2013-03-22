@@ -12,6 +12,8 @@
 
 class Bar < ActiveRecord::Base
   attr_accessible :bar_name, :lat, :long, :password, :password_confirmation
+  has_many :manager_relationships, dependent: :destroy
+  has_many :users, through: :manager_relationships
   has_secure_password
 
   VALID_FLOAT_REGEX = /[-+]?([0-9]*\.[0-9]+|[0-9]+)/i
