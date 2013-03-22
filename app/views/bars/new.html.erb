@@ -1,0 +1,28 @@
+<% provide(:title, 'New Bar') %>
+
+<h1>New Bar</h1>
+
+<div class = "row">
+	<div class="span6 offset3">
+		<%= form_for(@bar) do |f| %>
+		<%= render 'shared/bar_error_messages' %>
+
+			<%= f.label :bar_name, "Name" %>
+      		<%= f.text_field :bar_name %>
+
+      		<%= f.label :lat %>
+      		<%= f.text_field :lat %>
+
+      		<%= f.label :long %>
+      		<%= f.text_field :long %>
+
+		    <%= f.label :password %>
+      		<%= f.password_field :password %>
+
+      		<%= f.label :password_confirmation, "Confirmation" %>
+      		<%= f.password_field :password_confirmation %>
+
+      	<%= f.submit "Create Bar", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
