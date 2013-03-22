@@ -9,4 +9,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :bar do
+  	bar_name	"Banshee"
+  	lat			123321.32
+  	long		321321.32
+  	password "password"
+  	password_confirmation "password"
+  end
+
 end
