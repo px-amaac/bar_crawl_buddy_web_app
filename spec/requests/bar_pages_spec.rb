@@ -21,7 +21,6 @@ describe "Bar pages" do
 		end
 	end
 
-
 	describe "bar page" do
 		let(:bar) { FactoryGirl.create(:bar) }
 		let(:user) { FactoryGirl.create(:user) }
