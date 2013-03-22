@@ -3,10 +3,33 @@ require 'spec_helper'
 describe "Bar pages" do
 	subject { page }
 
+	describe "bar index" do
+		before do
+			sign_in FactoryGirl.create(:admin)
+			FactoryGirl.create(:bar, bar_name: "Bob", lat: 321232.12, long: 321232.23)
+			FactoryGirl.create(:bar, bar_name: "Benb", lat: 321132.12, long: 332132.23)
+			visit bars_path
+		end
+
+		it { should have_selector('title', text: 'All Bars') }
+		it { should have_selector('h1', text: 'All Bars') }
+
+		it "should list each user" do
+			Bar.all.each do |bar|
+				page.should have_selector('li', text: bar.bar_name)
+			end
+		end
+	end
+
+
 	describe "bar page" do
 		let(:bar) { FactoryGirl.create(:bar) }
-		before { visit bar_path(bar) }
+		let(:user) { FactoryGirl.create(:user) }
 
+		before(:each) do
+			sign_in user
+			visit bar_path(bar)
+		end
 		it { should have_selector('h1',    text: bar.bar_name) }
   		it { should have_selector('title', text: bar.bar_name) }
 	end

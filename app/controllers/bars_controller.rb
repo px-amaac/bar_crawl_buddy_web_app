@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-	
+	before_filter :signed_in_user, :only => [:show, :new, :create, :destroy]
 	before_filter :admin_user, :only => [:new, :create, :destroy]
 
 	def show
@@ -8,6 +8,10 @@ class BarsController < ApplicationController
 
 	def new
 		@bar = Bar.new
+	end
+
+	def index
+		@bars = Bar.all
 	end
 
 	def create

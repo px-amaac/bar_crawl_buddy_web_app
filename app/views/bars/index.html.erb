@@ -1,0 +1,11 @@
+<% provide(:title, 'All Bars') %>
+
+<h1>All Bars</h1>
+
+<ul class="bars">
+	<% @bars.each do |bar| %>
+	<li>
+		<%= link_to bar.bar_name, bar %>
+	</li>
+	<% end %>
+</ul>
