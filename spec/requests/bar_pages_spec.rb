@@ -31,6 +31,50 @@ describe "Bar pages" do
 		end
 		it { should have_selector('h1',    text: bar.bar_name) }
   		it { should have_selector('title', text: bar.bar_name) }
+
+  		describe "manage/unmanage buttons" do
+  			before { visit bar_path(bar) }
+
+  			it "should increment the uaser bars count" do
+  				expect do
+  					click_button "Manage"
+  				end.to change(user.bars, :count).by(1)
+  			end
+
+  			it "should increment the bars users count" do
+  				expect do
+  					click_button "Manage"
+  				end.to change(bar.users, :count).by(1)
+  			end
+
+  			describe "toggling the button" do
+  				before { click_button "Manage" }
+  				it {should have_selector('input', value: 'Unmanage') }
+  			end
+  		end
+  			describe "unmanaging a bar" do
+  				before do
+  					user.manage!(bar)
+  					visit bar_path(bar)
+  				end
+
+  				it "should decrement the users bars count" do
+  					expect do
+  						click_button "Unmanage"
+  					end.to change(user.bars, :count).by(-1)
+  				end
+  				it "should decrement the bars users count" do
+  					expect do
+  						click_button "Unmanage"
+  					end.to change(bar.users, :count).by(-1)
+  				end
+
+  				describe "toggling the button" do
+  					before { click_button "Unmanage" }
+  						it { should have_selector('input', value: 'Manage') }
+  				end
+  			end
+
 	end
 	describe "new bar" do
 		let(:admin) { FactoryGirl.create(:admin) }
