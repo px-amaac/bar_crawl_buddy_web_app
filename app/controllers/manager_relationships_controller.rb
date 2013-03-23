@@ -4,11 +4,17 @@ class ManagerRelationshipsController < ApplicationController
 	def create
 		@bar = Bar.find(params[:manager_relationship][:bar_id])
 		current_user.manage!(@bar)
-		redirect_to @bar
+		respond_to do |format|
+			format.html { redirect_to @bar }
+			format.js
+		end
 	end
 	def destroy
 		@bar = ManagerRelationship.find(params[:id]).bar
 		current_user.unmanage!(@bar)
-		redirect_to @bar
+		respond_to do |format|
+			format.html { redirect_to @bar}
+			format.js
+		end
 	end
 end
