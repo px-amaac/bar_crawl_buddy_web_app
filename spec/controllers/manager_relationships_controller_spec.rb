@@ -11,7 +11,7 @@ describe ManagerRelationshipsController do
 
 		it "should increment the manager relationship count" do
 			expect do
-				xhr :post, :create, manager_relationship: { bar_id: bar.id }
+				xhr :post, :create, manager_relationship: { bar_id: bar.id, password: "password" }
 			end.to change(ManagerRelationship, :count).by(1)
 		end
 

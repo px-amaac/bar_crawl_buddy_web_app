@@ -35,21 +35,27 @@ describe "Bar pages" do
   		describe "manage/unmanage buttons" do
   			before { visit bar_path(bar) }
 
-  			it "should increment the uaser bars count" do
-  				expect do
-  					click_button "Manage"
-  				end.to change(user.bars, :count).by(1)
-  			end
+  			describe "managing" do 
+  				let(:manage) { "Manage" }
+  				before do
+  					fill_in "Password", with: "password"
+  				end
+  				it "should increment the user bars count" do
+  					expect do
+  						click_button manage
+  					end.to change(user.bars, :count).by(1)
+  				end
 
-  			it "should increment the bars users count" do
-  				expect do
-  					click_button "Manage"
-  				end.to change(bar.users, :count).by(1)
-  			end
+  				it "should increment the bars users count" do
+  					expect do
+  						click_button manage
+  					end.to change(bar.users, :count).by(1)
+  				end
 
-  			describe "toggling the button" do
-  				before { click_button "Manage" }
-  				it {should have_selector('input', value: 'Unmanage') }
+  				describe "toggling the button" do
+  					before { click_button manage }
+  					it {should have_selector('input', value: 'Unmanage') }
+  				end
   			end
   		end
   			describe "unmanaging a bar" do
