@@ -3,15 +3,16 @@ class ManagerRelationshipsController < ApplicationController
 
 	def create
 		@bar = Bar.find(params[:manager_relationship][:bar_id])
-		if @bar.authenticate(params[:manager_relationship][:password])
-		current_user.manage!(@bar)
 		respond_to do |format|
-			format.html { redirect_to @bar }
-			format.js
+			if @bar.authenticate(params[:manager_relationship][:password])
+			current_user.manage!(@bar)
+		
+				format.html { redirect_to @bar }
+				format.js
+			
+			else
+				redirect_to bar_path(@bar), :alert => "Invalid Password"
 			end
-		else
-			flash.now[:error] = "Invalid Password!"
-			render @bar
 		end
 	end
 	def destroy
