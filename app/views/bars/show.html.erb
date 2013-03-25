@@ -7,5 +7,12 @@
 	</aisde>
 	<div class="span8">
 		<%= render 'manage_form' if signed_in? %>
+
+		<% if flash[:alert] %>
+			<%= flash[:alert] %>
+			<%= @variable %>
+		<% else %>
+			<%= "Aaron is a rails noob"%>
+		<% end %>
 	</div>
 </div>

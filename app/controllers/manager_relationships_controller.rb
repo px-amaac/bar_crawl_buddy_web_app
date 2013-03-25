@@ -6,12 +6,13 @@ class ManagerRelationshipsController < ApplicationController
 		respond_to do |format|
 			if @bar.authenticate(params[:manager_relationship][:password])
 			current_user.manage!(@bar)
-		
+				
 				format.html { redirect_to @bar }
 				format.js
 			
 			else
-				redirect_to bar_path(@bar), :alert => "Invalid Password"
+				@variable  = 45
+				redirect_to bar_path(@bar), {:alert => "Invalid Password" } 
 			end
 		end
 	end
